@@ -3,74 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hafiltcom</title>
+    <title>Hafiltcom | حافلتكم</title>
+    <!-- استيراد الأيقونات -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* تنسيقات إضافية للفوتر والأزرار الجديدة */
+        footer {
+            background-color: #f8f9fa;
+            padding: 2rem 0;
+            margin-top: 4rem;
+            border-top: 1px solid #eee;
+            text-align: center;
+        }
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+        .social-btn {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #333;
+        }
+        .social-btn:hover {
+            background-color: #007bff;
+            color: white;
+            border-color: #007bff;
+            transform: translateY(-3px);
+        }
+        .join-us-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .join-us-btn:hover {
+            background-color: #0056b3;
+        }
+        .copyright {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        .hidden { display: none; }
+    </style>
 </head>
 <body class="light-theme">
 
     <!-- شاشة الترحيب -->
     <div id="splash-screen">
         <div class="splash-content">
-            <img src="hafiltcom.png" alt="Hafiltcom" id="splash-logo">
+            <img src="hafiltcom.png" alt="Hafiltcom" id="splash-logo" onerror="this.src='https://via.placeholder.com/150?text=Hafiltcom'">
             <h1 class="splash-title">Hafiltcom</h1>
         </div>
     </div>
 
     <!-- المحتوى الرئيسي -->
-    <div id="app-content" class="hidden">
+    <div id="app-content">
         <header>
-            <nav class="container nav-wrapper">
-                <div class="logo-area">
-                    <img src="hafiltcom.png" alt="Logo" class="nav-logo">
-                    <span class="brand">Hafiltcom</span>
+            <nav class="container nav-wrapper" style="display: flex; justify-content: space-between; align-items: center; padding: 1rem;">
+                <div class="logo-area" style="display: flex; align-items: center; gap: 10px;">
+                    <img src="hafiltcom.png" alt="Logo" class="nav-logo" style="height: 40px;" onerror="this.src='https://via.placeholder.com/40'">
+                    <span class="brand" style="font-weight: bold; font-size: 1.2rem;">Hafiltcom</span>
                 </div>
                 
-                <!-- زر القائمة للهواتف -->
+                <ul class="nav-links" id="nav-links" style="list-style: none; display: flex; gap: 20px; align-items: center;">
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#offers">عروضنا</a></li>
+                    <li><a href="#about">نبذة عنا</a></li>
+                    <li><a href="login.html" class="join-us-btn">انضم إلينا</a></li>
+                </ul>
+
+                <!-- زر القائمة للهواتف (يظهر عبر CSS في الملف الأصلي) -->
                 <button class="menu-toggle" id="menu-toggle" aria-label="فتح القائمة">
                     <span></span>
                     <span></span>
                     <span></span>
                 </button>
-
-                <ul class="nav-links" id="nav-links">
-                    <li><a href="#home">الرئيسية</a></li>
-                    <li><a href="#offers">عروضنا</a></li>
-                    <li><a href="#about">نبذة عنا</a></li>
-                    <li><button onclick="showDashboard('client')" 
-                </ul>
             </nav>
         </header>
 
         <main>
             <!-- Hero Section -->
             <section id="home" class="hero">
-                <div class="container hero-content">
+                <div class="container hero-content" style="text-align: center; padding: 5rem 1rem;">
                     <h1>مستقبل النقل في الجزائر بين يديك</h1>
                     <p>أول منصة رقمية متكاملة لركوب الحافلات عبر بطاقات الـ RFID الذكية.</p>
-                    <div class="hero-actions">
-                        <button class="btn-primary" onclick="openModal('auth-modal')">ابدأ الآن</button>
-                        <button class="btn-secondary">اكتشف المزيد</button>
+                    <div class="hero-actions" style="margin-top: 2rem;">
+                        <!-- تم حذف زر ابدأ الآن -->
+                        <button class="btn-secondary" style="padding: 0.8rem 2rem; border-radius: 8px; cursor: pointer;">اكتشف المزيد</button>
                     </div>
                 </div>
             </section>
 
             <!-- عروضنا -->
             <section id="offers" class="section container">
-                <h2 class="section-title">عروضنا</h2>
-                <div class="responsive-grid">
-                    <div class="price-card">
+                <h2 class="section-title" style="text-align: center; margin-bottom: 2rem;">عروضنا</h2>
+                <div class="responsive-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                    <div class="price-card" style="border: 1px solid #eee; padding: 2rem; border-radius: 12px; text-align: center;">
                         <h3>مجانية</h3>
                         <p class="price">0 دج</p>
                         <button class="btn-outline">اختيار</button>
                     </div>
-                    <div class="price-card featured">
-                        <div class="popular-badge">الأكثر طلباً</div>
+                    <div class="price-card featured" style="border: 2px solid #007bff; padding: 2rem; border-radius: 12px; text-align: center; position: relative;">
+                        <div class="popular-badge" style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #007bff; color: white; padding: 2px 12px; border-radius: 20px; font-size: 0.8rem;">الأكثر طلباً</div>
                         <h3>شهرية</h3>
                         <p class="price">عرض خاص</p>
-                        <button class="btn-primary">اشتراك</button>
+                        <button class="btn-primary" style="background: #007bff; color: white; border: none; padding: 0.5rem 1.5rem; border-radius: 5px; cursor: pointer;">اشتراك</button>
                     </div>
-                    <div class="price-card">
+                    <div class="price-card" style="border: 1px solid #eee; padding: 2rem; border-radius: 12px; text-align: center;">
                         <h3>سنوية</h3>
                         <p class="price">توفير 30%</p>
                         <button class="btn-outline">اشتراك</button>
@@ -78,10 +137,42 @@
                 </div>
             </section>
         </main>
+
+        <!-- الفوتر الجديد -->
+        <footer>
+            <div class="container footer-content">
+                <div class="social-links">
+                    <button class="social-btn" title="فيسبوك" onclick="window.location.href='#'">
+                        <i data-lucide="facebook"></i>
+                    </button>
+                    <button class="social-btn" title="إنستغرام" onclick="window.location.href='#'">
+                        <i data-lucide="instagram"></i>
+                    </button>
+                    <button class="social-btn" title="إرسال إيميل" onclick="window.location.href='mailto:info@hafiltcom.dz'">
+                        <i data-lucide="mail"></i>
+                    </button>
+                    <button class="social-btn" title="اتصل بنا" onclick="window.location.href='tel:+213123456789'">
+                        <i data-lucide="phone"></i>
+                    </button>
+                </div>
+                <div class="copyright">
+                    جميع الحقوق محفوظة &copy; 2026 <strong>Hafiltcom</strong>
+                </div>
+            </div>
+        </footer>
     </div>
 
-   
+    <script>
+        // تفعيل الأيقونات
+        lucide.createIcons();
 
+        // إخفاء شاشة الترحيب بعد ثانيتين (مثال)
+        window.onload = () => {
+            setTimeout(() => {
+                document.getElementById('splash-screen').style.display = 'none';
+            }, 2000);
+        };
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
