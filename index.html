@@ -3,82 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hafiltcom </title>
+    <title>Hafiltcomل</title>
     <link rel="stylesheet" href="style.css">
-    <!-- استيراد الخطوط لتناسب المستخدم الجزائري -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="light-theme">
 
-    <!-- صفحة الترحيب (Splash Page) -->
-    <div id="splash-screen" class="splash-container">
+    <!-- شاشة الترحيب -->
+    <div id="splash-screen">
         <div class="splash-content">
-            <img src="hafiltcom.png" alt="Hafiltcom Logo" class="blinking-logo" onerror="this.src='https://via.placeholder.com/200?text=Hafiltcom'">
-            <h1 class="fade-in">Hafiltcom</h1>
-            <p class="fade-in-delayed">خلي رحلاتك ممتعة</p>
+            <img src="hafiltcom.png" alt="Hafiltcom" id="splash-logo">
+            <h1 class="splash-title">Hafiltcom</h1>
         </div>
     </div>
 
-    <!-- الصفحة الرئيسية (Main Content) -->
-    <div id="main-content" class="hidden">
+    <!-- المحتوى الرئيسي -->
+    <div id="app-content" class="hidden">
         <header>
-            <nav class="navbar">
+            <nav class="container nav-wrapper">
                 <div class="logo-area">
-                    <img src="hafiltcom.png" alt="Logo" class="nav-logo" width="40">
-                    <span>Hafiltcom</span>
+                    <img src="hafiltcom.png" alt="Logo" class="nav-logo">
+                    <span class="brand">Hafiltcom</span>
                 </div>
-                <ul class="nav-links">
+                
+                <!-- زر القائمة للهواتف -->
+                <button class="menu-toggle" id="menu-toggle" aria-label="فتح القائمة">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <ul class="nav-links" id="nav-links">
                     <li><a href="#home">الرئيسية</a></li>
                     <li><a href="#offers">عروضنا</a></li>
                     <li><a href="#about">نبذة عنا</a></li>
-                    <li><a href="#contact">اتصل بنا</a></li>
+                    <li><button onclick="showDashboard('client')" class="btn-nav-action">لوحة التحكم</button></li>
                 </ul>
-                <button id="theme-toggle" class="btn-secondary">تبديل النمط</button>
             </nav>
         </header>
 
         <main>
-            <!-- قسم الترحيب الرئيسي -->
+            <!-- Hero Section -->
             <section id="home" class="hero">
-                <h2>مرحباً بك في مستقبل النقل في الجزائر</h2>
-                <p>نظام ذكي لإدارة رحلات الحافلات عبر تقنية RFID</p>
-                <div class="cta-buttons">
-                    <button class="btn-primary" onclick="showAuth('signup')">انضم لنا</button>
-                    <button class="btn-outline" onclick="showAuth('login')">تسجيل الدخول</button>
+                <div class="container hero-content">
+                    <h1>مستقبل النقل في الجزائر بين يديك</h1>
+                    <p>أول منصة رقمية متكاملة لركوب الحافلات عبر بطاقات الـ RFID الذكية.</p>
+                    <div class="hero-actions">
+                        <button class="btn-primary" onclick="openModal('auth-modal')">ابدأ الآن</button>
+                        <button class="btn-secondary">اكتشف المزيد</button>
+                    </div>
                 </div>
             </section>
 
-            <!-- قسم العروض -->
-            <section id="offers" class="pricing">
-                <h3>اشتراكاتنا</h3>
-                <div class="price-cards">
-                    <div class="card">
-                        <h4>مجانية</h4>
-                        <p>أساسي</p>
-                        <button class="btn-card">اختر</button>
+            <!-- عروضنا -->
+            <section id="offers" class="section container">
+                <h2 class="section-title">عروضنا</h2>
+                <div class="responsive-grid">
+                    <div class="price-card">
+                        <h3>مجانية</h3>
+                        <p class="price">0 دج</p>
+                        <button class="btn-outline">اختيار</button>
                     </div>
-                    <div class="card popular">
-                        <h4>شهرية</h4>
-                        <p>الأكثر طلباً</p>
-                        <button class="btn-card">اختر</button>
+                    <div class="price-card featured">
+                        <div class="popular-badge">الأكثر طلباً</div>
+                        <h3>شهرية</h3>
+                        <p class="price">عرض خاص</p>
+                        <button class="btn-primary">اشتراك</button>
                     </div>
-                    <div class="card">
-                        <h4>سنوية</h4>
-                        <p>توفير أكبر</p>
-                        <button class="btn-card">اختر</button>
+                    <div class="price-card">
+                        <h3>سنوية</h3>
+                        <p class="price">توفير 30%</p>
+                        <button class="btn-outline">اشتراك</button>
                     </div>
                 </div>
             </section>
         </main>
+    </div>
 
-        <footer>
-            <div class="footer-info">
-                <p>&copy; 2024 Hafiltcom - جميع الحقوق محفوظة</p>
-                <div class="social-links">
-                    <span>Facebook</span> | <span>Instagram</span>
-                </div>
+    <!-- لوحة تحكم المسافر (المتجاوبة) -->
+    <div id="client-dashboard" class="hidden dash-container">
+        <nav class="mobile-dash-nav">
+             <button onclick="toggleSidebar()">☰</button>
+             <span>Hafiltcom Dashboard</span>
+        </nav>
+        
+        <aside class="sidebar" id="sidebar">
+            <div class="user-info">
+                <div class="avatar">👤</div>
+                <h3>محمد الجزائري</h3>
             </div>
-        </footer>
+            <div class="side-menu">
+                <button onclick="showSection('profile')" class="active">الملف الشخصي</button>
+                <button onclick="showSection('wallet')">المحفظة</button>
+                <button onclick="showSection('card')">طلب بطاقة</button>
+                <button onclick="location.reload()" class="logout-link">تسجيل الخروج</button>
+            </div>
+        </aside>
+
+        <main class="dash-content">
+            <section id="sec-profile" class="dash-section">
+                <h2>بياناتي</h2>
+                <div class="responsive-form">
+                    <input type="text" placeholder="الاسم الكامل">
+                    <input type="email" placeholder="البريد الإلكتروني">
+                    <button class="btn-primary">تحديث</button>
+                </div>
+            </section>
+            
+            <section id="sec-wallet" class="dash-section hidden">
+                <h2>محفظتي</h2>
+                <div class="balance-card">
+                    <small>الرصيد الحالي</small>
+                    <strong>1,250 دج</strong>
+                </div>
+            </section>
+        </main>
     </div>
 
     <script src="script.js"></script>

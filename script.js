@@ -1,40 +1,55 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const splashScreen = document.getElementById('splash-screen');
-    const mainContent = document.getElementById('main-content');
-    const themeToggle = document.getElementById('theme-toggle');
-
-    // 1. إدارة شاشة الترحيب (Splash Screen)
-    // تختفي بعد 3 ثوانٍ وتظهر الصفحة الرئيسية
+    // 1. التعامل مع الـ Splash Screen
+    const splash = document.getElementById('splash-screen');
+    const app = document.getElementById('app-content');
+    
     setTimeout(() => {
-        splashScreen.classList.add('hidden');
-        mainContent.classList.remove('hidden');
-        mainContent.classList.add('fade-in');
-    }, 3500);
+        splash.style.opacity = '0';
+        setTimeout(() => {
+            splash.classList.add('hidden');
+            app.classList.remove('hidden');
+        }, 500);
+    }, 2500);
 
-    // 2. إدارة الوضع الداكن (Dark Mode)
-    themeToggle.addEventListener('click', () => {
-        const currentTheme = document.body.getAttribute('data-theme');
-        if (currentTheme === 'dark') {
-            document.body.removeAttribute('data-theme');
-            localStorage.setItem('theme', 'light');
-        } else {
-            document.body.setAttribute('data-theme', 'dark');
-            localStorage.setItem('theme', 'dark');
-        }
-    });
+    // 2. تفعيل قائمة الجوال (Hamburger Menu)
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
 
-    // تحميل السمة المحفوظة مسبقاً
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        document.body.setAttribute('data-theme', 'dark');
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            // تحويل أيقونة القائمة لشكل X (اختياري)
+            menuToggle.classList.toggle('open');
+        });
     }
 
-    // 3. وظائف تجريبية للأزرار
-    window.showAuth = (type) => {
-        if(type === 'signup') {
-            alert('سيتم توجيهك لصفحة "انضم لنا" (قيد التطوير)');
-        } else {
-            alert('سيتم توجيهك لصفحة تسجيل الدخول (قيد التطوير)');
-        }
-    };
+    // إغلاق القائمة عند الضغط على رابط
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+        });
+    });
 });
+
+// 3. وظائف لوحة التحكم
+function showDashboard(type) {
+    document.getElementById('app-content').classList.add('hidden');
+    if(type === 'client') {
+        document.getElementById('client-dashboard').classList.remove('hidden');
+    }
+}
+
+function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    sidebar.classList.toggle('active');
+}
+
+function showSection(id) {
+    document.querySelectorAll('.dash-section').forEach(s => s.classList.add('hidden'));
+    document.getElementById('sec-' + id).classList.remove('hidden');
+    
+    // إخفاء السايدبار في الجوال بعد اختيار قسم
+    if (window.innerWidth <= 768) {
+        toggleSidebar();
+    }
+}
