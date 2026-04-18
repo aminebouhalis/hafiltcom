@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hafiltcomل</title>
+    <title>Hafiltcom</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -37,7 +37,7 @@
                     <li><a href="#home">الرئيسية</a></li>
                     <li><a href="#offers">عروضنا</a></li>
                     <li><a href="#about">نبذة عنا</a></li>
-                    <li><button onclick="showDashboard('client')" class="btn-nav-action">لوحة التحكم</button></li>
+                    <li><button onclick="showDashboard('client')" 
                 </ul>
             </nav>
         </header>
@@ -80,45 +80,7 @@
         </main>
     </div>
 
-    <!-- لوحة تحكم المسافر (المتجاوبة) -->
-    <div id="client-dashboard" class="hidden dash-container">
-        <nav class="mobile-dash-nav">
-             <button onclick="toggleSidebar()">☰</button>
-             <span>Hafiltcom Dashboard</span>
-        </nav>
-        
-        <aside class="sidebar" id="sidebar">
-            <div class="user-info">
-                <div class="avatar">👤</div>
-                <h3>محمد الجزائري</h3>
-            </div>
-            <div class="side-menu">
-                <button onclick="showSection('profile')" class="active">الملف الشخصي</button>
-                <button onclick="showSection('wallet')">المحفظة</button>
-                <button onclick="showSection('card')">طلب بطاقة</button>
-                <button onclick="location.reload()" class="logout-link">تسجيل الخروج</button>
-            </div>
-        </aside>
-
-        <main class="dash-content">
-            <section id="sec-profile" class="dash-section">
-                <h2>بياناتي</h2>
-                <div class="responsive-form">
-                    <input type="text" placeholder="الاسم الكامل">
-                    <input type="email" placeholder="البريد الإلكتروني">
-                    <button class="btn-primary">تحديث</button>
-                </div>
-            </section>
-            
-            <section id="sec-wallet" class="dash-section hidden">
-                <h2>محفظتي</h2>
-                <div class="balance-card">
-                    <small>الرصيد الحالي</small>
-                    <strong>1,250 دج</strong>
-                </div>
-            </section>
-        </main>
-    </div>
+   
 
     <script src="script.js"></script>
 </body>
