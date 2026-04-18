@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hafiltcom - خلي رحلاتك ممتعة</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- استيراد الخطوط لتناسب المستخدم الجزائري -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- صفحة الترحيب (Splash Page) -->
+    <div id="splash-screen" class="splash-container">
+        <div class="splash-content">
+            <img src="hafiltcom.png" alt="Hafiltcom Logo" class="blinking-logo" onerror="this.src='https://via.placeholder.com/200?text=Hafiltcom'">
+            <h1 class="fade-in">Hafiltcom</h1>
+            <p class="fade-in-delayed">خلي رحلاتك ممتعة</p>
+        </div>
+    </div>
+
+    <!-- الصفحة الرئيسية (Main Content) -->
+    <div id="main-content" class="hidden">
+        <header>
+            <nav class="navbar">
+                <div class="logo-area">
+                    <img src="hafiltcom.png" alt="Logo" class="nav-logo" width="40">
+                    <span>Hafiltcom</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#offers">عروضنا</a></li>
+                    <li><a href="#about">نبذة عنا</a></li>
+                    <li><a href="#contact">اتصل بنا</a></li>
+                </ul>
+                <button id="theme-toggle" class="btn-secondary">تبديل النمط</button>
+            </nav>
+        </header>
+
+        <main>
+            <!-- قسم الترحيب الرئيسي -->
+            <section id="home" class="hero">
+                <h2>مرحباً بك في مستقبل النقل في الجزائر</h2>
+                <p>نظام ذكي لإدارة رحلات الحافلات عبر تقنية RFID</p>
+                <div class="cta-buttons">
+                    <button class="btn-primary" onclick="showAuth('signup')">انضم لنا</button>
+                    <button class="btn-outline" onclick="showAuth('login')">تسجيل الدخول</button>
+                </div>
+            </section>
+
+            <!-- قسم العروض -->
+            <section id="offers" class="pricing">
+                <h3>اشتراكاتنا</h3>
+                <div class="price-cards">
+                    <div class="card">
+                        <h4>مجانية</h4>
+                        <p>أساسي</p>
+                        <button class="btn-card">اختر</button>
+                    </div>
+                    <div class="card popular">
+                        <h4>شهرية</h4>
+                        <p>الأكثر طلباً</p>
+                        <button class="btn-card">اختر</button>
+                    </div>
+                    <div class="card">
+                        <h4>سنوية</h4>
+                        <p>توفير أكبر</p>
+                        <button class="btn-card">اختر</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-info">
+                <p>&copy; 2024 Hafiltcom - جميع الحقوق محفوظة</p>
+                <div class="social-links">
+                    <span>Facebook</span> | <span>Instagram</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
